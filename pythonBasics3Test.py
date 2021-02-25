@@ -1,72 +1,50 @@
+import unittest
 
 import pythonBasics3
-# main() is already set up to call the functions
-# we want to test with a few different inputs,
-# printing 'OK' when each function is correct.
-# the simple provided test() function used in main() to print
-# what each function returns vs. what it's supposed to return.
 
-def test(got, expected):
-    if got == expected:
-        prefix = ' OK '
-    else:
-        prefix = '  X '
-    print ('%s got: %s expected: %s' % (prefix, repr(got), repr(expected)))
+class TestPythonBasicsOne(unittest.TestCase):
 
-# Calls the functions in pythonBasics3 with interesting inputs.
-def main():
-    # set which functions to test
-    starts_with_number = True
-    starts_with_consonant = False
-    binary_multiple_of_4 = False
+#Test case for ends_with_consonant
+    def test_ends_with_consonant(self):
 
-    if starts_with_number:
-        print('starts_with_number')
-        test(pythonBasics3.starts_with_number('12'), True)
-        test(pythonBasics3.starts_with_number('21'), True)
-        test(pythonBasics3.starts_with_number('31'), True)
-        test(pythonBasics3.starts_with_number('41'), True)
-        test(pythonBasics3.starts_with_number('51'), True)
-        test(pythonBasics3.starts_with_number('61'), True)
-        test(pythonBasics3.starts_with_number('71'), True)
-        test(pythonBasics3.starts_with_number('81'), True)
-        test(pythonBasics3.starts_with_number('91'), True)
-        test(pythonBasics3.starts_with_number('Aadfdf'), False)
-        test(pythonBasics3.starts_with_number('#foo'), False)
-        test(pythonBasics3.starts_with_number(''), False)
+        self.assertEqual(pythonBasics3.ends_with_consonant("Once upon a dark, cold night"), False)
 
-    if starts_with_consonant:
-        print('starts_with_consonant')
-        test(pythonBasics3.starts_with_consonant('vest'), True)
-        test(pythonBasics3.starts_with_consonant('cast'), True)
-        test(pythonBasics3.starts_with_consonant('cast'), True)
-        test(pythonBasics3.starts_with_consonant('cast'), True)
-        test(pythonBasics3.starts_with_consonant('#3'), False)
-        test(pythonBasics3.starts_with_consonant('east'), False)
-        test(pythonBasics3.starts_with_consonant('Eat'), False)
-        test(pythonBasics3.starts_with_consonant('Ice'), False)
-        test(pythonBasics3.starts_with_consonant('in'), False)
-        test(pythonBasics3.starts_with_consonant('at'), False)
-        test(pythonBasics3.starts_with_consonant('All'), False)
-        test(pythonBasics3.starts_with_consonant('on'), False)
-        test(pythonBasics3.starts_with_consonant('Out'), False)
-        test(pythonBasics3.starts_with_consonant('unlock'), False)
-        test(pythonBasics3.starts_with_consonant('Unique'), False)
-        test(pythonBasics3.starts_with_consonant(''), False)
+        self.assertEqual(pythonBasics3.ends_with_consonant("What did Steve just say"), True)
 
-    if binary_multiple_of_4:
-        print()
-        print('binary_multiple_of_4')
-        testset1 = ["1010101010100", "0101010101010100", "100", "0"]
+        self.assertEqual(pythonBasics3.ends_with_consonant("I once swam with sharks"), False)
 
-        for case in testset1:
-            test(pythonBasics3.binary_multiple_of_4(case),True)
+        self.assertEqual(pythonBasics3.ends_with_consonant("Do I know how old you are you"), True)
 
-        testset2 = ["101", "1000000000001", "1001", "a100", ""]
+        # Please add three more test cases following the order above
 
-        for case in testset2:
-            test(pythonBasics3.binary_multiple_of_4(case),False)
+#Test case for ends_with_number
+    def test_ends_with_number(self):
+
+        self.assertEqual(pythonBasics3.ends_with_number("What is 3/10"), True)
+
+        self.assertEqual(pythonBasics3.ends_with_number("It was not a cat"), False)
+
+        self.assertEqual(pythonBasics3.ends_with_number("I once swam with sharks"), False)
+
+        self.assertEqual(pythonBasics3.ends_with_number("Blue plus purple equals 5"), True)
+
+        # Please add three more test cases following the order above
+
+
+#Test case for binary_multiple_of_6
+    def test_binary_multiple_of_6(self):
+
+        self.assertEqual(pythonBasics3.binary_multiple_of_6("100101"), False)
+
+        self.assertEqual(pythonBasics3.binary_multiple_of_6("110"), True)
+
+        self.assertEqual(pythonBasics3.binary_multiple_of_6("111111"), False)
+
+        self.assertEqual(pythonBasics3.binary_multiple_of_6("3"), False)
+
 
 
 if __name__ == '__main__':
-  main()
+
+  unittest.main(verbosity=1)
+
