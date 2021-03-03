@@ -7,13 +7,13 @@ class TestPythonBasicsOne(unittest.TestCase):
 #Test case for ends_with_consonant
     def test_ends_with_consonant(self):
 
-        self.assertEqual(pythonBasics3.ends_with_consonant("Once upon a dark, cold night"), False)
+        self.assertEqual(pythonBasics3.ends_with_consonant("Once upon a dark, cold night"), True)
 
         self.assertEqual(pythonBasics3.ends_with_consonant("What did Steve just say"), True)
 
-        self.assertEqual(pythonBasics3.ends_with_consonant("I once swam with sharks"), False)
+        self.assertEqual(pythonBasics3.ends_with_consonant("I once swam with sharks"), True)
 
-        self.assertEqual(pythonBasics3.ends_with_consonant("Do I know how old you are you"), True)
+        self.assertEqual(pythonBasics3.ends_with_consonant("Do I know how old you are you"), False)
 
         # Please add three more test cases following the order above
 
